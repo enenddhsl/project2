@@ -1,4 +1,5 @@
 import React,{useEffect,useState } from 'react';
+import List from '../components/list/List';
 
 export default function Home() {
 
@@ -16,11 +17,6 @@ export default function Home() {
   ]
 
   const [roomList, setRoomList] = useState(roomNumber);
-
-
-
-
-
 
   return (
     <>
@@ -42,18 +38,7 @@ export default function Home() {
           <div className="text-center">청구금액</div>
         </div>
         {(roomList || []).map((item,i)=>(
-          <div className="grid grid-cols-10" key={item.idx}>
-            <input type="text" className="border border-red-200 mx-1 text-center" value={item.no} disabled />
-            <input type="number" className={`border border-red-200 mx-1 text-center ${'before_price' + item.idx}`}/>
-            <input type="number" className={`border border-red-200 mx-1 text-center ${'after_price' + item.idx}`}/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-            <input type="number" className="border border-red-200 mx-1 text-center" value="20000" disabled/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-            <input type="number" className="border border-red-200 mx-1 text-center"/>
-          </div>
+          <List roomList={roomList} setRoomList={setRoomList} no={item.no} idx={item.idx} key={item.idx}/>
         ))}
         
       </div>
